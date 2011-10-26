@@ -1,13 +1,16 @@
-$(function(){
-  var $form = $("form[name='Login']");
-  var $id = $form.find("input[name='uid']");
-  var $password = $form.find("input[name='pwd']");
-  safari.self.addEventListener('message', function(evt){
-    var id = evt.message['id'];
-    var password = evt.message['password'];
+$(function() {
+  var $form, $id, $password;
+  $form = $("form[name='Login']");
+  $id = $form.find("input[name='uid']");
+  $password = $form.find("input[name='pwd']");
+  safari.self.addEventListener('message', function(e) {
+    var id, password;
+    console.log("hoge");
+    id = e.message['id'];
+    password = e.message['password'];
     $id.val(id);
     $password.val(password);
-    $form.submit();
-  },false);
-  safari.self.tab.dispatchMessage('URL',location.href);
+    return $form.submit;
+  }, false);
+  return safari.self.tab.dispatchMessage('URL', location.href);
 });
